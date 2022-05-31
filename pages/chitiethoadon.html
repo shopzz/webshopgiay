@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Trang admin</title>
+    <link rel="stylesheet" href="../css/admin.css" type="text/css">
+    <link rel="stylesheet" href="../css/danhmuc.css" type="text/css">
+    <link rel="stylesheet" href="../css/adminsanpham.css" type="text/css">
+    <script src="../js/sanpham.js"></script>
+    <script src="../js/giohang.js"></script>
+    <script src="../js/hotro.js"></script>
+    <script src="../js/inner.js"></script>
+    <script src="../js/script.js"></script>
+<style>
+.content-admin-middle{
+    height: auto;
+    width: 100%;
+}
+.khachhang h1 {
+    text-align: center;
+    margin: 20px;
+
+}
+.khachhang div{
+    margin: 10px;
+}
+.sanphamdiv h1 {
+    text-align: center;
+    margin: 20px;
+}
+.sanphamdiv div{
+    margin: 10px;
+}
+#content-product-content h2{
+    text-align: center;height: 600px;
+    line-height: 600px;
+}
+.khachhang {
+    width: 50%;
+    margin: 30px auto;
+    /* margin: 30px; */
+    border: 1px solid #ddd;
+}
+.sanphamdiv {
+    width: 50%;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="#" class="logo">L&N SHOES</a>
+            <h3>Xin chào <script>document.write(localStorage.getItem('loginName'));</script>  &#9996</h3>
+         </div>
+         <div  class="menu">
+            <ul>
+                <li><a href="adminsanpham.html"  id="sp" onClick="hienthi(this);">Sản phẩm</a>
+                </li>
+                <li><a href="#" id="ds" onClick="hienthidanhsach(this);">Danh sách</a>
+                    <ul class="sub-menu">
+                        <li><a href="danhsachkhachhang.html" id="dskh" onClick="hienthi(this)">Danh sách khách hàng</a></li>
+                        <li><a href="danhsachdonhang.html" id="dssp" onClick="hienthi(this);">Danh sách đơn hàng</a></li>                
+                    </ul>
+                </li>
+                <li><a href="quanlytaikhoan.html">Tài khoản</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li onClick="Logout();"><a href="../dangnhap.html">Đăng xuất</a></li>
+            </ul>
+        </div>
+    <div class="bill-detail-content">
+        <div id="my-bill-detail">
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Members</h4>
+                    <ul>
+                        <li><a href="">Nguyễn Viết Thành Công</a></li>
+                        <li><a href="">MSSV: 2001200625</a></li>
+                        <li><a href="">Lê Văn Ngọc Nghĩa</a></li>
+                        <li><a href="">MSSV: 2001200626</a></li>
+                 
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order Status</a></li>
+                        <li><a href="">Payment</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Online shop</h4>
+                    <ul>
+                        <li><a href="">NIKE</a></li>
+                        <li><a href="">ADIDAS</a></li>
+                        <li><a href="">PUMA</a></li>
+                        <li><a href="">FILA</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-link">
+                        <ul>
+                            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    <script>
+        showChiTietHoaDon();
+    </script>
+    <script>
+        showBillList();
+     </script>
+ </body>
+ </html>

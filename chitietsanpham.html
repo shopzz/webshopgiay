@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <script src="./js/sanpham.js"></script>
+    <script src="./js/giohang.js"></script>
+    <link rel="stylesheet" href="./css/danhmuc.css">
+    <script src="./js/search.js"></script>
+    <script src="./js/script.js"></script>
+<style>
+.active, .size-btn:hover {
+  background-color: #666;
+  color: white;
+}
+</style>    
+<body>
+<div class="wrapper">
+<!---------HEADER----------------->
+<div class="header">
+    <a href="#" class="logo">L&N SHOES</a>
+        <nav class="navbar" id="myBtnContainer">
+            <a href="index.html" id="btn" class="phanloai" data-filter="all">TRANG CHỦ</a>
+            <a href="index.html" id="btn"class="phanloai" data-filter="NIKE">NIKE</a>
+            <a href="index.html" id="btn" class="phanloai" data-filter="ADIDAS">ADIDAS</a>
+            <a href="index.html" id="btn " class="phanloai" data-filter="PUMA">PUMA</a>
+            <a href="index.html" id="btn " class="phanloai" data-filter="FILA">FILA</a>
+            <a href="index.html" id="btn" class="phanloai" data-filter="all">BỘ SƯU TẬP</a>
+        </nav>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="giohang.html"><div id="cart-btn" class="fas fa-shopping-cart" onclick="showcart();"><span id="countsp"></span></div></a>
+            <div id="login-btn" class="login-text"> <a href="thongtintaikhoan.html"><i class="fas fa-user"></i><script>document.write(localStorage.getItem('loginName'));</script></a></div>
+
+            <button onclick="Logout();" style="float: right;" id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+     </div>
+    <form action="" class="search-form">
+        <input type="text" placeholder="Nhập sản phẩm cần tìm" id="search-box" onkeyup="search_products()">
+        <label for="search-box" class="fas fa-search"></label>
+
+    </form>
+  
+</div>     
+
+<!--------------CHI TIẾT SẢN PHẨM-->
+    <div class="product-detail">
+        
+    </div>
+<!-----------GIỚI THIỆU CÁC SẢN PHẨM LIÊN QUAN--------->
+<div class="product-relate">
+    <div class="product-relate-title">
+        <p>CÁC LOẠI SẢN PHẨM LIÊN QUAN KHÁC</p>
+    </div>
+    <div class="product-relate-content">
+        <div class="product-relate-content-item">
+            <img src="GIAY NIKE/Nike Blazer Mid '77 LX - 3519000.jpg" alt="">
+            <h1>NIKE BLAZER MID '77 LX</h1>
+            <p>3.519.000vnđ</p>
+        </div>
+        <div class="product-relate-content-item">
+            <img src="GIAY NIKE/Nike ZoomX Vaporfly Next% 2 - 6090000.jpg" alt="">
+            <h1>NIKE ZOOMX VAPORFLY NEXT% 2</h1>
+            <p>6.090.000vnđ</p>
+        </div>
+        <div class="product-relate-content-item">
+            <img src="GIAY NIKE/Nike Air Zoom Tempo NEXT% 5869000.jpg" alt="">
+            <h1>NIKE AIR ZOOM TEMPO NEXT%</h1>
+            <p>5.869.000vnđ</p>
+        </div>
+        <div class="product-relate-content-item">
+            <img src="GIAY NIKE/Nike Air Force 1 '07 Premium - 3239000.jpg" alt="">
+            <h1>NIKE AIR FORCE 1 '07 PREMIUM</h1>
+            <p>3.239.000vnđ</p>
+        </div>
+        <div class="product-relate-content-item">
+            <img src="GIAY NIKE/nike zoom double stacked - 4329000.jpg" alt="">
+            <h1>NIKE ZOOM DOUBLE STACKED</h1>
+            <p>4.329.000vnđ</p>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <!------FOOTER-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>L&N SHOES</h4>
+                    <ul>
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Dịch vụ</a></li>
+                        <li><a href="">Chính sách bảo mật</a></li>
+                        <li><a href="">Chính sách đổi trả</a></li>
+                 
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Trợ giúp</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Giao hàng</a></li>
+                        <li><a href="">Trả hàng</a></li>
+                        <li><a href="thongtindonhang.html">Đơn hàng</a></li>
+                        <li><a href="trangthanhtoan.html">Thanh toán</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="index.html">NIKE</a></li>
+                        <li><a href="index.html">ADIDAS</a></li>
+                        <li><a href="index.html">PUMA</a></li>
+                        <li><a href="index.html">FILA</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-link">
+                        <ul>
+                            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+</body>
+<script>
+    showChiTietSanPham();
+    var header = document.getElementsByClassName("size")[0];
+    var btns = header.getElementsByClassName("size-btn");
+    for (var i = 0; i < btns.length; i++) {//duyệt mảng nút đó đó
+        btns[i].addEventListener("click", function() { //gọi sự kiện click
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+<script>
+    let loginName = localStorage.getItem('loginName') ? localStorage.getItem('loginName') : '';
+    if(loginName==''){
+        document.getElementById('login-btn').innerHTML='<a href="dangnhap.html"><i class="fas fa-user"></i></a>';
+        document.getElementById('logout-btn').style.display="none";
+    }
+    
+</script>
+<script src="js/index.js">
+ 
+</script>
+</html>

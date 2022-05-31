@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/dangnhap.css">
+    <script src="./js/script.js"></script>
+    <title>Đăng nhập</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form-login">
+        <h1>Đăng nhập</h1>
+        <div class="form-text">
+            <label>Username</label>
+            <input type="text" id="login_name">
+        </div>
+        <div class="form-text">
+            <label>Password</label>
+            <input type="password" id="pass">
+        </div>
+        <button onclick="login();">Đăng nhập</button>
+        <span>Bạn chưa có tài khoản ? Đăng ký <a href="./dangky.html">Tại đây</a></span>
+    </form>
+    </div>
+    <script>
+        const formLogin=document.querySelectorAll('.form-text input');
+        const formLabel=document.querySelectorAll('.form-text label');
+        for(let i=0;i<2;i++){
+            formLogin[i].addEventListener("mouseover",function(){
+                formLabel[i].classList.add("focus")
+            })
+            formLogin[i].addEventListener("mouseout",function(){
+                if( formLogin[i].value=="")
+                {
+                    formLabel[i].classList.remove("focus");
+                }
+                
+            })
+        }
+    </script>
+    <script>
+    let loginName = localStorage.getItem('loginName') ? localStorage.getItem('loginName') : '';
+    let loginPass = localStorage.getItem('loginPass') ? localStorage.getItem('loginPass') : '';
+    if(loginName!=''){
+        if(loginName=='admin' && loginPass=='admin'){
+            alert('Bạn đã đăng nhập với tư cách admin');
+            window.location.href = 'admin.html';
+        }
+    else{
+        alert('Mời bạn trải nghiệm mua hàng tại shop!');
+        window.location.href="index.html";
+        }
+    }
+    </script>
+</body>
+</html>

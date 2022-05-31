@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/Dk.css">
+    <script src="./js/script.js"></script>
+    <title>Đăng ký</title>
+    <style>
+        input.invalid{
+            border-bottom: 2px solid red;
+        }
+        .form-errormessage{
+            color: red;
+            float: left;
+            padding-left: 12px;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form-sign-up" onclick="Validate();">  
+        <h1>Đăng ký</h1>
+        <div class="form-text">
+            <input type="text" id="fullname" name="name" placeholder="Họ và Tên">
+            <div class="form-errormessage hidden">Vui lòng nhập họ tên</div>
+        </div>
+        <div class="form-text">
+            <input type="text" id="address" name="address" placeholder="Địa chỉ">
+            <div class="form-errormessage hidden">Vui lòng nhập địa chỉ</div>
+        </div>
+        <div class="form-text">
+            <input type="text" id="phone" name="phone" part="Số điện thoại" placeholder="Số điện thoại" maxlength="10">
+            <div class="form-errormessage hidden">Cần nhập đúng 10 kí tự số</div>
+        </div>
+        <div class="form-text">
+            <input type="text" id="login_name" name="loginname" placeholder="Tên đăng nhập">
+            <div class="form-errormessage hidden">Ít nhất một chữ và ít nhất 1 số, chiều dài tối thiểu là 8, không đc chứa kí tự đặc biệt</div>
+            <div class="form-errormessage hidden">Tên đăng nhập này đã được sử dụng</div>
+        </div>
+        <div class="form-text">
+            <input type="password" name="password" id="pass" placeholder="Nhập mật khẩu">
+            <div class="form-errormessage hidden">Vui lòng nhập mật khẩu</div>
+        </div> 
+        <div class="form-text">
+            <input type="password" name="confirm" id="confirm" placeholder="Nhập lại mật khẩu">
+            <div class="form-errormessage hidden">Vui lòng nhập lại mật khẩu</div>
+        </div>
+        <button>Đăng Ký</button> 
+        <span>Bạn đã có tài khoản ? Đăng nhập <a href="dangnhap.html">Tại đây</a></span>  
+      </form>
+    </div>  
+</body>
+<script>
+    //-----Hàm thực hiện Validate cho trang đăng ký
+
+    const checkForm = document.querySelector('.form-sign-up');    
+    const checkName = document.querySelector('input[name="name"]');
+    const checkLogin_Name = document.querySelector('input[name="loginname"]');
+    const checkAddress = document.querySelector('input[name="address"]');
+    const checkPhone = document.querySelector('input[name="phone"]');
+    const checkPass = document.querySelector('input[name="password"]');
+    const checkConfirm = document.querySelector('input[name="confirm"]');
+    
+    const inputs = [checkName, checkAddress, checkPhone, checkLogin_Name, checkPass, checkConfirm];
+
+    
+    const invalidLoginName = (username) => {
+        var testName = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return testName.test(username);
+    }
+    //Kiểm tra chiều dài của số điện thoại
+    const invalidPhone = (phone) => {
+        var testPhone = /^[0-9]{10}$/;
+        return testPhone.test(phone);
+    }
+    //Kiểm tra phần confirm mật khẩu
+    const invalidConfirm = (pass, confirm) => {
+        return pass == confirm;
+    }
+
+    let isFormValid = false;
+    let isValidationOn = false;
+    //Khi load lại trang thì ko báo lỗi
+    const resetElement = (element) => {    
+        element.classList.remove('invalid');
+        element.nextElementSibling.classList.add('hidden');
+    }
+    //Nếu rỗng hoặc sai cú pháp thì sẽ báo lỗi
+    const ivalidElement = (element) => {
+        element.classList.add('invalid');
+        element.nextElementSibling.classList.remove('hidden');
+    }
+    
+    //Duyệt từng input và kiểm tra giá trị nhập vào
+    const Validate = () => {
+        let userArray = [];
+        userArray = JSON.parse(localStorage.getItem('TaiKhoan')) ? JSON.parse(localStorage.getItem('TaiKhoan')) : [];
+
+        if(!isValidationOn) return;
+        isFormValid = true;
+        inputs.forEach(resetElement);
+
+        if(!checkName.value){
+            isFormValid = false;
+            ivalidElement(checkName);
+        }
+
+        if(!invalidLoginName(checkLogin_Name.value)){
+            isFormValid = false;
+            ivalidElement(checkLogin_Name);
+        }
+        
+        if(!checkAddress.value){
+            isFormValid = false;        
+            ivalidElement(checkAddress);
+        }
+
+        if(!invalidPhone(checkPhone.value)){
+            isFormValid = false;        
+            ivalidElement(checkPhone);
+        }
+
+        if(!checkPass.value){
+            isFormValid = false;
+            ivalidElement(checkPass);
+        }
+
+        if(!invalidConfirm(checkPass.value,checkConfirm.value)){
+            isFormValid = false;
+            ivalidElement(checkConfirm);
+        }
+    };
+
+
+    //Khi form hợp lệ hết thì sẽ xuất thông báo hoàn thành form
+    checkForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        isValidationOn = true;
+        Validate();
+        
+        if(isFormValid){
+            createUser();   //Đúng hết thì mới tạo user mới
+            window.location.href = 'dangnhap.html';
+        }
+    });
+
+    //Nhấp vào ô nào thì sẽ kiểm tra giá trị luôn
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+            Validate();
+        });
+    });
+    var today=new Date();
+    function createUser() {
+        let name, address, phone, loginname, pass;
+            
+        fullname = document.getElementById('fullname').value;
+        address = document.getElementById('address').value;
+        phone = document.getElementById('phone').value;
+        username = document.getElementById('login_name').value;
+        password = document.getElementById('pass').value;
+        let userArray = [];
+        userArray = JSON.parse(localStorage.getItem('TaiKhoan')) ? JSON.parse(localStorage.getItem('TaiKhoan')) : [];
+        
+        //Nếu tài khoản đã tồn tại thì sẽ chuyển sang trang đăng nhập và dữ liệu bị trùng sẽ ko được thêm vào mảng 
+        if(checkLogin_Name.value){
+            for(var i = 0; i < userArray.length; i++){
+                if(checkLogin_Name.value===userArray[i].username){
+                    isFormValid = false;
+                    alert("Tài khoản này đã tồn tại!");
+                    return;
+                }
+            }            
+        }
+        /////////////////////////////////
+
+        userArray.push({
+            'username': username,
+            'password': password,
+            'address':address,
+            'phone':phone,
+            'fullname':fullname,
+            'datesignup': today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear(),
+             usertype:"khachhang"
+        })
+        localStorage.setItem('TaiKhoan', JSON.stringify(userArray));
+        alert('Bạn đã đăng ký thành công!');
+        window.location.href='dangnhap.html';
+        showUserList();
+    }
+</script> 
+</html>

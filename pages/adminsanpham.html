@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <link rel="stylesheet" href="../css/admin.css" type="text/css">
+    <link rel="stylesheet" href="../css/adminsanpham.css" type="text/css">
+    <script src="../js/sanpham.js"></script>
+    <script src="../js/giohang.js"></script>
+    <script src="../js/hotro.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="../js/inner.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/suathongtin.js"></script>
+<style>
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+div#myForm {
+    width: 50%;
+    margin: 1000px auto;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 30px;
+    background: white;
+}
+div#myForm input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    position: relative;
+}
+
+input#mySearch {
+    width: 61%;
+    height: 50px;
+    margin: 10px auto;
+
+}
+.popup-form{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="#" class="logo">L&N SHOES</a>
+            <h3>Xin chào <script>document.write(localStorage.getItem('loginName'));</script>  &#9996</h3>
+         </div>
+         <div  class="menu">
+            <ul>
+                <li><a href="adminsanpham.html"  id="sp" onClick="hienthi(this);">Sản phẩm</a>
+                </li>
+                <li><a href="#" id="ds" onClick="hienthidanhsach(this);">Danh sách</a>
+                    <ul class="sub-menu">
+                        <li><a href="danhsachkhachhang.html" id="dskh" onClick="hienthi(this)">Danh sách khách hàng</a></li>
+                        <li><a href="danhsachdonhang.html" id="dssp" onClick="hienthi(this);">Danh sách đơn hàng</a></li>                
+                    </ul>
+                </li>
+                <li><a href="quanlytaikhoan.html">Tài khoản</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li onClick="Logout();"><a href="../dangnhap.html">Đăng xuất</a></li>
+            </ul>
+        </div>
+        <div class="popup-form">
+            <div class="form-popup" id="myForm">
+                <form class="form-container">
+              <h1>Sửa thông tin</h1>
+          
+              <label for="img"><b>Hình ảnh</b></label>
+              <input type="text" placeholder="" name="img" id ="img"required>
+          
+              <label for="name"><b>Tên sản phẩm</b></label>
+              <input type="text"  name="name" id ="name" required>
+          
+              <label for="price"><b>Giá sản phẩm</b></label>
+              <input type="text"  name="price" id ="price" required>
+          
+              <label for="discount"><b>Giảm giá</b></label>
+              <input type="number"  name="discount" id ="discount" required>
+          
+              <label for="id"><b>Số ID</b></label>
+              <input type="text"  name="id" id ="id" required>
+          
+              <label for="brandsp"><b>BRAND</b></label>
+              <input type="text"  name="brand" id ="brandsp" required>
+              
+                   <div class="button-popup">
+
+                    <button type="button" class="btn" onclick="suaThongTinSanPham()">Sửa</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>                    
+                </div>
+            </form>
+          </div>
+        </div>
+    <div class="content-middle">
+        
+        <div class="themmoisanpham">
+            <div class="content-title">
+                <h1>THÊM SẢN PHẨM</h1>
+            </div>
+            <form action="">
+            <label for="hinhAnh">Hình ảnh sản phẩm</label>
+            <input type="text" name="" id="hinhAnh">
+
+            <label for="ten">Tên sản phẩm</label>
+            <input type="text" name="" id="ten">
+
+            <label for="giasp">Giá sản phẩm</label>
+            <input type="text" name="" id="giasp">
+
+            <label for="phantramgiamgia">Giảm giá(%) - Từ 0 đến 1</label>
+            <input type="number" name="" id="phantramgiamgia">
+
+            <label for="soid">Số ID sản phẩm</label>
+            <input type="text" name="" id="soid">
+
+            <label for="brand">Brand sản phẩm</label>
+            <input type="text" name="" id="brand">
+
+            <label for="detail-product"> Chi tiết sản phẩm</label>
+
+                <input type="text" name="" height="300" id="detail-product">
+            <button onclick="taoSanPham();">Tạo sản phẩm</button>
+        
+            </form>
+        </div>
+        
+        <div class="information">
+            <div class="title">
+                <H1>DANH SÁCH SẢN PHẨM</H1>
+            </div>
+            <div class="searching-input">
+                <form action="" id="formSearch">
+                    <input type="text" id="mySearch" onkeyup="searchProduct()">
+                    <label for="mySearch" class="fas fa-search"></label>
+                </form>
+            </div>
+            <table  class="productsList" id='myTable'>
+
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Members</h4>
+                    <ul>
+                        <li><a href="">Nguyễn Viết Thành Công</a></li>
+                        <li><a href="">MSSV: 2001200625</a></li>
+                        <li><a href="">Lê Văn Ngọc Nghĩa</a></li>
+                        <li><a href="">MSSV: 2001200626</a></li>
+                 
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order Status</a></li>
+                        <li><a href="">Payment</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Online shop</h4>
+                    <ul>
+                        <li><a href="">NIKE</a></li>
+                        <li><a href="">ADIDAS</a></li>
+                        <li><a href="">PUMA</a></li>
+                        <li><a href="">FILA</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-link">
+                        <ul>
+                            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    <!-- <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="hinhAnh">Img</label>
+                        <input type="text" id="hinhAnh" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="ten">Tên sản phẩm</label>
+                        <input type="text" id="ten" class="form-control">
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="giasp">Giá sản phẩm</label>
+                        <input type="text" id="giasp" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phantramgiamgia">Giảm giá</label>
+                        <input type="text" id="phantramgiamgia" class="form-control">
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="soid">ID</label>
+                        <input type="text" id="soid" class="form-control">
+                    </div>
+     
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+                        <input type="text" id="brand" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="saveInfo()">Save changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+
+</div> -->
+
+<!-- <script>
+    let tableRowElement;
+    function toggleModal(element) {
+ 
+        tableRowElement = element.parentElement;
+        const img = tableRowElement.getElementsByClassName('hinhanh')[0].innerHTML;
+        const name = tableRowElement.getElementsByClassName('tensp')[0].innerHTML;
+        const price = tableRowElement.getElementsByClassName('giasp')[0].innerHTML;
+        const phantram = tableRowElement.getElementsByClassName('phantram')[0].innerHTML;
+        const soid = tableRowElement.getElementsByClassName('soid')[0].innerHTML;
+        const brand = tableRowElement.getElementsByClassName('brand')[0].innerHTML;
+        document.getElementById('hinhAnh').value=img;
+        document.getElementById('ten').value = name;
+        document.getElementById('giasp').value = price;
+        document.getElementById('phantramgiamgia').value = phantram;
+        document.getElementById('soid').value = soid;
+        document.getElementById('brand').value = brand;
+        console.log(img,name,price,phantram,soid,brand);
+
+        openModal();
+    }
+ 
+    function saveInfo() {
+        const img= document.getElementById('hinhAnh').value; 
+        const name =document.getElementById('ten').value;
+        const price=document.getElementById('giasp').value;
+        const phantram=document.getElementById('phantramgiamgia').value;
+        const soid=document.getElementById('soid').value;
+        const brand=document.getElementById('brand').value;
+ 
+        tableRowElement.getElementsByClassName('hinhanh')[0].innerHTML=img;
+        tableRowElement.getElementsByClassName('tensp')[0].innerHTML=name;
+        tableRowElement.getElementsByClassName('giasp')[0].innerHTML=price;
+        tableRowElement.getElementsByClassName('phantram')[0].innerHTML=phantram;
+        tableRowElement.getElementsByClassName('soid')[0].innerHTML=soid;
+        tableRowElement.getElementsByClassName('brand')[0].innerHTML=brand;
+        console.log(img,name,price,phantram,soid,brand);
+        closeModal();
+    }
+ 
+    function openModal() {
+        document.getElementById("backdrop").style.display = "block"
+
+        document.getElementById("exampleModal").style.display = "block"
+        document.getElementById("exampleModal").classList.add("show");
+    }
+ 
+    function closeModal() {
+        document.getElementById("backdrop").style.display = "none"
+
+        document.getElementById("exampleModal").style.display = "none"
+        document.getElementById("exampleModal").classList.remove("show");
+    }
+ 
+    function removeRow(current) {
+        current.parentElement.parentElement.remove();
+    }
+</script> -->
+<script>
+    showProductList();
+</script>
+</body>
+</html>

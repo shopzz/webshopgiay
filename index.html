@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <script src="./js/sanpham.js"></script>
+    <script src="./js/giohang.js"></script>
+    <link rel="stylesheet" href="./css/danhmuc.css">
+    <script src="./js/search.js"></script>
+    <script src="./js/script.js"></script>
+<style>
+.header-top{
+    justify-content: space-between;
+}
+.header-top ul{
+    display: flex;
+}
+.header-top ul li{
+    padding: 10px;
+}
+.header-middle{
+    display: flex;
+}
+.prevBanner, .nextBanner {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.nextBanner {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prevBanner:hover, .nextBanner:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+.content-noitem {
+    /* width: 1000px; */
+    font-size: 30px;
+    text-align: center;
+    line-height: 300px;
+}
+
+</style>
+</head>
+<body>
+<!-------HEADER-->
+<div class="header">
+    <a href="#" class="logo">L&N SHOES</a>
+        <nav class="navbar" id="myBtnContainer">
+            <a href="#" id="btn active" class="phanloai active" data-filter="all">TRANG CHỦ</a>
+            <a href="#" id="btn"class="phanloai active" data-filter="NIKE">NIKE</a>
+            <a href="#" id="btn" class="phanloai active" data-filter="ADIDAS">ADIDAS</a>
+            <a href="#" id="btn " class="phanloai active" data-filter="PUMA">PUMA</a>
+            <a href="#" id="btn " class="phanloai active" data-filter="FILA">FILA</a>
+            <a href="#" id="btn" class="phanloai active" data-filter="all">BỘ SƯU TẬP</a>
+        </nav>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="giohang.html"><div id="cart-btn" class="fas fa-shopping-cart" onclick="showcart();"><span id="countsp"></span></div></a>
+            <div id="login-btn" class="login-text"> <a href="thongtintaikhoan.html"><i class="fas fa-user"></i><script>document.write(localStorage.getItem('loginName'));</script></a></div>
+
+            <button onclick="Logout();" style="float: right;" id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+     </div>
+    <form action="" class="search-form">
+        <input type="text" placeholder="Nhập sản phẩm cần tìm" id="search-box" onkeyup="search_products()">
+        <label for="search-box" class="fas fa-search"></label>
+
+    </form>
+  
+</div>     
+<!----BANNER CHUYỂN ĐỘNG-->
+<div class="slider">
+    <div class="banners">
+        <div class="myBanners">
+            <img src="bannerlnshoes.jpg" alt="">
+        </div>
+        <div class="myBanners">
+            <img src="./imagines/bannerpuma.jpg" alt="">
+        </div>
+        <div class="myBanners">
+            <img src="./imagines/banneradidas.jpg" alt="">
+        </div>
+        <div class="myBanners">
+            <img src="./imagines/bannerfila.jpg" alt="">
+        </div>
+        <a class="prevBanner" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="nextBanner" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</div>
+
+<div class="content">
+
+    <section id="products">
+        <div class="content-noitem" style="display: none;">
+            KHÔNG CÓ SẢN PHẨM BẠN CẦN TÌM
+        </div>
+        <div class="products-content">
+        <!----B1: TẠO LAYOUY->LAYOUT TĨNH-->
+        <!----B2: CHUYERN LAYOUT VÀ JS ĐỂ ĐƯA THÔNG TIN SẢN PHẨM VÀO WEBISTE-->
+
+            <div class="sanpham">
+                <div class="hinhanhsp">
+                    <img src="./imagines/PUMA/PUMA/men/Black Fives Suede Men's Sneakers  -  2.000.000.jpg" alt="">
+                </div>
+                </a>
+                <h1 class="ten-sp">PUMA</h1>
+                <p class="gia-sp">3000000</p>
+                <p class="giamgia">2000000</p>
+                <button onclick="themvaogiohang(this);" class="button-btn">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="sanpham">
+                <div class="hinhanhsp">
+                    <img src="./imagines/PUMA/PUMA/men/Black Fives Suede Men's Sneakers  -  2.000.000.jpg" alt="">
+                </div>
+                <h1 class="ten-sp">PUMA</h1>
+                <p class="gia-sp">3000000</p>
+                <p class="giamgia">2000000</p>   
+                <button class="button-btn">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="sanpham">
+                <div class="hinhanhsp">
+                    <img src="./imagines/PUMA/PUMA/men/Black Fives Suede Men's Sneakers  -  2.000.000.jpg" alt="">
+                </div>
+                <h1 class="ten-sp">PUMA</h1>
+                <p class="gia-sp">3000000</p>
+                <p class="giamgia">2000000</p>
+                <button class="button-btn">Thêm vào giỏ hàng</button>
+
+            </div>
+            <div class="sanpham">
+                <div class="hinhanhsp">
+                    <img src="./imagines/PUMA/PUMA/men/Black Fives Suede Men's Sneakers  -  2.000.000.jpg" alt="">
+                </div>
+                <h1 class="ten-sp">PUMA</h1>
+                <p class="gia-sp">3000000</p>
+                <p class="giamgia">2000000</p>
+                <button class="button-btn">Thêm vào giỏ hàng</button>
+            </div>
+            <div class="sanpham">
+                <div class="hinhanhsp">
+                    <img src="./imagines/PUMA/PUMA/men/Black Fives Suede Men's Sneakers  -  2.000.000.jpg" alt="">
+                </div>
+                <h1 class="ten-sp">PUMA</h1>
+                <p class="gia-sp">3000000</p>
+                <p class="giamgia">2000000</p>
+                <button class="button-btn">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+       
+    </section>
+    <!--Số trang-->
+    <div class="pagination">
+        <div class="prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="page"><span class="page"></span></div>
+        <div class="next"><i class="fas fa-chevron-right"></i></div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>L&N SHOES</h4>
+                <ul>
+                    <li><a href="">Về chúng tôi</a></li>
+                    <li><a href="">Dịch vụ</a></li>
+                    <li><a href="">Chính sách bảo mật</a></li>
+                    <li><a href="">Chính sách đổi trả</a></li>
+             
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Trợ giúp</h4>
+                <ul>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Giao hàng</a></li>
+                    <li><a href="">Trả hàng</a></li>
+                    <li><a href="thongtindonhang.html">Đơn hàng</a></li>
+                    <li><a href="trangthanhtoan.html">Thanh toán</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="index.html">NIKE</a></li>
+                    <li><a href="index.html">ADIDAS</a></li>
+                    <li><a href="index.html">PUMA</a></li>
+                    <li><a href="index.html">FILA</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="social-link">
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    let loginName = localStorage.getItem('loginName') ? localStorage.getItem('loginName') : '';
+    if(loginName==''){//nếu tên đăng nhập bằng rỗng
+        document.getElementById('login-btn').innerHTML='<a href="dangnhap.html"><i class="fas fa-user"></i></a>';
+        document.getElementById('logout-btn').style.display="none";//ẩn 
+    }
+    
+</script>
+<script src="./js/inner.js"></script>
+<script>
+renderProduct();
+</script>
+<script src="./js/paging.js"></script>
+
+<script src="./js/index.js">
+
+</script>
+<script>
+const btns=document.querySelectorAll('.phanloai');
+const storeProducts=document.querySelectorAll('.sanpham');
+    for(i=0;i<btns.length;i++){
+        btns[i].addEventListener('click',(e)=>{
+            e.preventDefault(); //ngăn page reload không mất dữ liệu
+            const filter=e.target.dataset.filter;//lấy filter đã định nghĩa
+            storeProducts.forEach((product)=>{
+                if(filter=="all"){ //nếu filter == all thì tất cả product hiện 
+                    product.style.display="inline-block";
+                }
+                else{//nếu filter = những filter còn lại thì hiển thị sản phẩm giống với filter đã chọn
+                    if(product.classList.contains(filter)){
+                        product.style.display="inline-block";
+
+                    }
+                    else{
+                        product.style.display="none";
+
+                    }
+                }
+            })
+        })
+    }
+</script>
+<script>
+function search_products() {
+let input = document.getElementById('search-box').value;
+input=input.toLowerCase();//không in hoa
+let x = document.getElementsByClassName('ten-sp'); //gọi x là tên sản phẩm
+let y=document.getElementsByClassName('sanpham'); //gọi y là một cái class bao cái sản phẩm
+for (i = 0; i < x.length; i++) { //duyệt mảng x, nếu x khoogn tồn tại thì class bao không hiện
+    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+        y[i].style.display="none";
+    }
+    else { // còn nếu x có tồn tại thì class bao xuất hiện
+        y[i].style.display="inline-block";                 
+    }
+}
+}
+</script>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("myBanners");
+      if (n > slides.length) {
+          slideIndex = 1
+      }
+      if (n < 1) {
+          slideIndex = slides.length
+      }
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slides[slideIndex-1].style.display = "block";
+    }
+</script>
+</html>

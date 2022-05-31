@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="./js/sanpham.js"></script>
+    <link rel="stylesheet" href="./css/danhmuc.css">
+    <script src="./js/giohang.js"></script>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="trangthanhtoan.css">
+    <script src="./js/index.js"></script>
+    <script src="./js/search.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<!---------HEADER----------------->
+<div class="header">
+    <a href="#" class="logo">L&N SHOES</a>
+        <nav class="navbar" id="myBtnContainer">
+            <a href="index.html" id="btn active" class="phanloai active" data-filter="all">TRANG CHỦ</a>
+            <a href="index.html" id="btn"class="phanloai active" data-filter="NIKE">NIKE</a>
+            <a href="index.html" id="btn" class="phanloai active" data-filter="ADIDAS">ADIDAS</a>
+            <a href="index.html" id="btn " class="phanloai active" data-filter="PUMA">PUMA</a>
+            <a href="index.html" id="btn " class="phanloai active" data-filter="FILA">FILA</a>
+            <a href="index.html" id="btn" class="phanloai active" data-filter="all">BỘ SƯU TẬP</a>
+        </nav>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="giohang.html"><div id="cart-btn" class="fas fa-shopping-cart" onclick="showcart();"><span id="countsp"></span></div></a>
+            <div id="login-btn" class="login-text"> <a href="thongtintaikhoan.html"><i class="fas fa-user"></i><script>document.write(localStorage.getItem('loginName'));</script></a></div>
+
+            <button onclick="Logout();" style="float: right;" id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+     </div>
+    <form action="" class="search-form">
+        <input type="text" placeholder="Nhập sản phẩm cần tìm" id="search-box" onkeyup="search_products()">
+        <label for="search-box" class="fas fa-search"></label>
+
+    </form>
+  
+</div>    
+<!---------PAYMENT------------->
+    <section class="payment">
+        <!-- Cho biết đang ở chức năng thanh toán -->
+        <div class="container">
+            <div class="payment-top-wrap">
+                <div class="payment-top">
+                    <div class="payment-top-delivery payment-top-item">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="payment-top-payment payment-top-item">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------ -->
+        <div class="container">
+            <div id="done" class="payment-content row">
+                <div class="payment-content-left">
+                    <div class="payment-content-left-method-payment">
+                        <h3 style="font-weight:bold;">PHƯƠNG THỨC THANH TOÁN</h3>
+                        <p>Mọi giao dịch đều được bảo mật và mã hoá</p><br>
+                        
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio" value="Thanh toán bằng thẻ tín dụng" onclick="showCredit();">
+                            <label>Thanh toán bằng thẻ tín dụng</label>
+                        </div><br/>
+                        
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio" value="Thanh toán bằng thẻ ATM" onclick="showCredit();" checked>
+                            <label>Thanh toán bằng thẻ ATM</label>
+                        </div><br/>
+                        
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio" value="Thanh toán bằng Momo">
+                            <label>Thanh toán bằng Momo</label>
+                        </div><br/>
+                        
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio" value="Thanh toán khi nhận hàng">
+                            <label>Thanh toán khi nhận hàng</label>
+                        </div><br/>
+                        
+                    
+
+                    <div class="payment-content-left-method-payment">
+                        
+                        <div class="card space icon-relative">
+                            <label class="label">Tên in trên thẻ:</label>
+                            <input type="text" class="input" id="chuthe" placeholder="NGUYEN VAN A" style="text-transform: uppercase;">
+                            <i class="fas fa-user"></i>
+                          </div>
+                          <div class="card space icon-relative">
+                            <label class="label">Số thẻ:</label>
+                            <input type="text" class="input" id="sothe" maxlength="16" placeholder="0000 0000 0000 0000">
+                            <i class="far fa-credit-card"></i>
+                          </div>
+                          <div class="card-grp space">
+                            <div class="card-item icon-relative">
+                              <label class="label">Ngày hết hạn:</label>
+                              <select class="input" style="text-align: center;">
+                                <option selected disabled>MM</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                              </select>
+                              <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div class="card-items icon-relative">
+                                <label class="label"><br></label>
+                                <select class="input">
+                                  <option selected disabled>YYYY</option>
+                                  <option value="2021">2021</option>
+                                  <option value="2022">2022</option>
+                                  <option value="2023">2023</option>
+                                  <option value="2024">2024</option>
+                                  <option value="2025">2025</option>
+                                  <option value="2026">2026</option>
+                                  <option value="2027">2027</option>
+                                  <option value="2028">2028</option>
+                                  <option value="2029">2029</option>
+                                  <option value="2030">2030</option>
+                                </select>
+                              </div>
+                            <div class="card-item icon-relative" style="width: 140px; margin-left: 45px;">
+                              <label class="label">Mã bảo mật:</label>
+                              <input type="text" class="input" maxlength="3" placeholder="000">
+                              <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- ------------------------------- -->
+                </div>
+                <!-- ------------------------------------ -->
+                <div class="payment-content-right">
+                    <div class="payment-content-right-button">
+                        <h3 style="font-weight:bold;">THÔNG TIN KHÁCH HÀNG</h3>
+                        <form id="thongtinkhachhang" onclick="Validate();">
+                            <div class="form-group">
+                                <label>Họ tên <span>*</span></label>
+                                <input name="name" id="name" type="text" placeholder="Nguyễn Văn A" autocomplete="off">
+                                <div class="form-errormessage hidden">Vui lòng nhập họ tên</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ <span>*</span></label>
+                                <input name="address" id="address" type="text" placeholder="Số nhà, phường(xã), quận(huyện), thành phố(tỉnh)" autocomplete="off">
+                                <div class="form-errormessage hidden">Đây là thông tin bắt buộc</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại <span>*</span></label>
+                                <input name="phone"  id="phone" type="text" placeholder="" maxlength="10" autocomplete="off">
+                                <div class="form-errormessage hidden">Cần nhập đủ 10 số</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email <span>*</span></label>
+                                <input name="mail" id="mail" type="text" placeholder="nguyenvana123@gmail.com" autocomplete="off">
+                                <div class="form-errormessage hidden">Cần nhập đúng cú pháp email</div>
+                            </div>
+                    </div>
+                    
+                </div>
+                <div class="payment-content-bill">
+                    <table class="bill-payment"  id="my-bill">
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="payment-content-right-contain-payment">
+                <div class="payment-content-right-payment">
+                        <button id="payment-button">THANH TOÁN NGAY</button>
+                </div>
+            </div>
+        </form>
+        <div class="payment-success hidden">Bạn đã hoàn thành xong các bước thanh toán!</div>
+    </section>
+       
+    <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>L&N SHOES</h4>
+                    <ul>
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Dịch vụ</a></li>
+                        <li><a href="">Chính sách bảo mật</a></li>
+                        <li><a href="">Chính sách đổi trả</a></li>
+                 
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Trợ giúp</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Giao hàng</a></li>
+                        <li><a href="">Trả hàng</a></li>
+                        <li><a href="thongtindonhang.html">Đơn hàng</a></li>
+                        <li><a href="trangthanhtoan.html">Thanh toán</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="index.html">NIKE</a></li>
+                        <li><a href="index.html">ADIDAS</a></li>
+                        <li><a href="index.html">PUMA</a></li>
+                        <li><a href="index.html">FILA</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-link">
+                        <ul>
+                            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <!-- ------------------------------------------------------------------------ -->
+    <script>
+        showMyBill();
+    </script> 
+<script>
+    let loginName = localStorage.getItem('loginName') ? localStorage.getItem('loginName') : '';
+    if(loginName==''){
+        document.getElementById('login-btn').innerHTML='<a href="dangnhap.html"><i class="fas fa-user"></i></a>';
+        document.getElementById('logout-btn').style.display="none";
+    }
+    
+</script>   
+
+<script>
+
+        //-----Hàm thực hiện Validate cho trang thanh toán
+
+        const checkForm = document.querySelector('#thongtinkhachhang');
+        const formSuccess = document.querySelector('.payment-success');
+        const checkName = document.querySelector('input[name="name"]');
+        const checkAddress = document.querySelector('input[name="address"]');
+        const checkPhone = document.querySelector('input[name="phone"]');
+        const checkEmail = document.querySelector('input[name="mail"]');
+        
+        const inputs = [checkName, checkAddress, checkPhone, checkEmail];
+        //Kiểm tra cú pháp của email
+        const invalidEmail = (email) => {
+            const check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+            return check.test(String(email).toLowerCase()); 
+        }
+        //Kiểm tra chiều dài của số điện thoại
+        const invalidPhone = (phone, length) => {
+            return phone.length == length;
+        }
+
+        let isFormValid = false;
+        let isValidationOn = false;
+        //Khi load lại trang thì ko báo lỗi
+        const resetElement = (element) => {    
+            element.classList.remove('invalid');
+            element.nextElementSibling.classList.add('hidden');
+        }
+        //Nếu rỗng hoặc sai cú pháp thì sẽ báo lỗi
+        const ivalidElement = (element) => {
+            element.classList.add('invalid');
+            element.nextElementSibling.classList.remove('hidden');
+        }
+        //Duyệt từng input và kiểm tra giá trị nhập vào
+        const Validate = () => {
+            if(!isValidationOn) return;
+            isFormValid = true;
+            inputs.forEach(resetElement);
+
+            if(!checkName.value){
+                isFormValid = false;
+                ivalidElement(checkName);
+            }
+
+            if(!checkAddress.value){
+                isFormValid = false;        
+                ivalidElement(checkAddress);
+            }
+
+            if(!invalidPhone(checkPhone.value,10)){
+                isFormValid = false;        
+                ivalidElement(checkPhone);
+            }
+
+            if(!invalidEmail(checkEmail.value)){
+                isFormValid = false;       
+                ivalidElement(checkEmail);
+            }
+        };
+
+
+        //Khi form hợp lệ hết thì sẽ xuất thông báo hoàn thành form
+        checkForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            isValidationOn = true;
+            Validate();
+            if(isFormValid){
+                saveData();
+                document.querySelector('#done').remove();
+                document.querySelector('.payment-content-right-contain-payment').remove();
+                formSuccess.classList.remove('hidden');
+            }
+        });
+
+        //Nhấp vào ô nào thì sẽ kiểm tra giá trị luôn
+        inputs.forEach(input => {
+            input.addEventListener("input", () => {
+                Validate();
+            });
+        });
+        //////////////////////////////////////////////
+
+        //-----LocalStorage cho trang thanh toán 
+        var today=new Date();
+        function saveData() {
+            let phuongthuc, name, address, phone, email,tongtien;
+            phuongthuc = document.getElementsByName("method-payment");
+            for (let i = 0; i < phuongthuc.length; i++) {
+                if(phuongthuc[i].checked === true) {
+                    phuongthuc = phuongthuc[i].value;
+                    break;
+                }
+            }
+            var giohang=JSON.parse(localStorage.getItem('GioHang'));
+            tongtien=document.getElementById('totalPriceAll').innerHTML;
+            let sp=[];
+            for(let i=0;i<giohang.length;i++){
+                sp.push({
+                    'sanpham':giohang[i][0],
+                    'tensanpham':giohang[i][1],
+                    'soluong':giohang[i][5],
+                    'size':giohang[i][4],
+                    'giasanpham':giohang[i][3]
+                })                
+            }
+            tongtien=document.getElementById('totalPriceAll').innerHTML;
+            name = document.getElementById('name').value;
+            address = document.getElementById('address').value;
+            phone = document.getElementById('phone').value;
+            email = document.getElementById('mail').value;
+            sothe = document.getElementById('sothe').value;
+            chuthe = document.getElementById('chuthe').value;
+            let userArray = [];
+            var hd={
+                'tentaikhoan':loginName,
+                'phuongthuc':phuongthuc,
+                'sothe':sothe,
+                'chuthe':chuthe,
+                'name':name,
+                'address':address,
+                'phone':phone,
+                'email':email,
+                'sanpham':sp,
+                'tongtien':tongtien,
+                'ngayxuat': today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear(),
+                'thoigianxuat': today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+            }
+            userArray = JSON.parse(localStorage.getItem('HoaDon')) ? JSON.parse(localStorage.getItem('HoaDon')) : [];
+            userArray.push(hd);
+            localStorage.setItem('HoaDon', JSON.stringify(userArray));
+            giohang=[];
+            localStorage.setItem('GioHang',JSON.stringify(giohang));
+        }
+</script>
+<script src="./js/index.js"></script>
+
+</body>
+</html>

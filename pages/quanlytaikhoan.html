@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin.css" type="text/css">
+    <link rel="stylesheet" href="../css/adminsanpham.css" type="text/css">
+    <script src="../js/sanpham.js"></script>
+    <script src="../js/giohang.js"></script>
+    <script src="../js/hotro.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="../js/inner.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/suathongtin.js"></script>
+    <script src="../js/search.js"></script>
+
+<style>
+.title{
+    text-align: center;
+    margin: 50px 0;
+}
+form.form-container h1 {
+    text-align: center;
+}
+.information{
+    text-align: center;
+    align-items: center;
+
+}
+div#myForm input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    position: relative;
+}
+.searching-input .fa-search{
+    position: absolute;
+}
+input#mySearch {
+    width: 61%;
+    height: 50px;
+    margin: 10px auto;
+
+}
+.wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.information table{
+    border-collapse: collapse;
+}
+.information table tr th,td{
+    border: 1px solid black;
+    padding: 10px;
+}
+div#myForm {
+    width: 50%;
+    margin: 20px auto;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 30px;
+    background: white;
+}
+div#myForm input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+}
+.popup-form{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="#" class="logo">L&N SHOES</a>
+            <h3>Xin chào <script>document.write(localStorage.getItem('loginName'));</script>  &#9996</h3>
+         </div>
+         <div  class="menu">
+            <ul>
+                <li><a href="adminsanpham.html"  id="sp" onClick="hienthi(this);">Sản phẩm</a>
+                </li>
+                <li><a href="#" id="ds" onClick="hienthidanhsach(this);">Danh sách</a>
+                    <ul class="sub-menu">
+                        <li><a href="danhsachkhachhang.html" id="dskh" onClick="hienthi(this)">Danh sách khách hàng</a></li>
+                        <li><a href="danhsachdonhang.html" id="dssp" onClick="hienthi(this);">Danh sách đơn hàng</a></li>                
+                    </ul>
+                </li>
+                <li><a href="quanlytaikhoan.html">Tài khoản</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li onClick="Logout();"><a href="../dangnhap.html">Đăng xuất</a></li>
+            </ul>
+        </div>
+        <div class="popup-form">
+            <div class="form-popup" id="myForm">
+                <form class="form-container">
+              <h1>Sửa thông tin</h1>
+          
+              <label for="login_name"><b>Tên tài khoản</b></label>
+              <input type="text" placeholder="" name="login_name" id ="login_name"required>
+          
+              <label for="pass"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="pass" id ="pass" required>
+          
+              <label for="address"><b>Địa chỉ</b></label>
+              <input type="text" placeholder="Enter address" name="address" id ="address" required>
+          
+              <label for="fullname"><b>Họ và tên</b></label>
+              <input type="text" placeholder="Enter fullname" name="fullname" id ="fullname" required>
+          
+              <label for="phone"><b>Điện thoại</b></label>
+              <input type="text" placeholder="Enter phone" name="phone" id ="phone" required>
+          
+              <label for="datesignup"><b>Ngày đăng kí</b></label>
+              <input type="date" placeholder="Enter date signup" name="datesignup" id ="datesignup" required>
+              
+              <label for="usertype"><b>Loại tài khoản</b></label>
+              <input type="text" placeholder="Enter type user" name="usertype" id ="usertype" required>
+                <div class="button-popup">
+
+                    <button type="button" class="btn" onclick="suaThongTin()">Sửa</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>                    
+                </div>
+            </form>
+          </div>
+        </div>
+    <div class="content-middle">
+        <div class="content">
+            <div class="title">
+                <H1>DANH SÁCH TÀI KHOẢN</H1>
+            </div>
+            <div class="searching-input">
+                <form action="" id="formSearch">
+                    <input type="text" id="mySearch" onkeyup="searchInfor()">
+                    <label for="mySearch" class="fas fa-search"></label>
+                </form>
+            </div>
+            <div class="information">
+                <table  id="usersList">
+                <thead>
+                        
+                </thead>
+                
+                </table>
+            </div>      
+            
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Members</h4>
+                    <ul>
+                        <li><a href="">Nguyễn Viết Thành Công</a></li>
+                            <li><a href="">MSSV: 2001200625</a></li>
+                            <li><a href="">Lê Văn Ngọc Nghĩa</a></li>
+                            <li><a href="">MSSV: 2001200626</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order Status</a></li>
+                        <li><a href="">Payment</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Online shop</h4>
+                    <ul>
+                        <li><a href="">NIKE</a></li>
+                        <li><a href="">ADIDAS</a></li>
+                        <li><a href="">PUMA</a></li>
+                        <li><a href="">FILA</a></li>
+    
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-link">
+                        <ul>
+                            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</body>
+
+</html>

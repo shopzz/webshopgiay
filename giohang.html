@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <link rel="stylesheet" href="./css/danhmuc.css" type="text/css">
+    <script src="./js/script.js"></script>
+    <script src="./js/sanpham.js"></script>
+    <script src="./js/giohang.js"></script>
+    <link rel="stylesheet" href="giohang.css">
+
+    <script src="./js/search.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<!---------HEADER----------------->
+<div class="header">
+    <a href="#" class="logo">L&N SHOES</a>
+        <nav class="navbar" id="myBtnContainer">
+            <a href="index.html" id="btn active" class="phanloai active" data-filter="all">TRANG CHỦ</a>
+            <a href="index.html" id="btn"class="phanloai active" data-filter="NIKE">NIKE</a>
+            <a href="index.html" id="btn" class="phanloai active" data-filter="ADIDAS">ADIDAS</a>
+            <a href="index.html" id="btn " class="phanloai active" data-filter="PUMA">PUMA</a>
+            <a href="index.html" id="btn " class="phanloai active" data-filter="FILA">FILA</a>
+            <a href="index.html" id="btn" class="phanloai active" data-filter="all">BỘ SƯU TẬP</a>
+        </nav>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="giohang.html"><div id="cart-btn" class="fas fa-shopping-cart" onclick="showcart();"><span id="countsp"></span></div></a>
+            <div id="login-btn" class="login-text"> <a href="thongtintaikhoan.html"><i class="fas fa-user"></i><script>document.write(localStorage.getItem('loginName'));</script></a></div>
+
+            <button onclick="Logout();" style="float: right;" id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+     </div>
+    <form action="" class="search-form">
+        <input type="text" placeholder="Nhập sản phẩm cần tìm" id="search-box" onkeyup="search_products()">
+        <label for="search-box" class="fas fa-search"></label>
+
+    </form>
+  
+</div>             
+                <!------cart------------------------>  
+    <section class="cart">
+        <div class="container">
+            <div class="cart-top-wrapper">
+                <div class="cart-top">
+                    <div class="cart-top-cart cart-top-items">
+                        <i class="fas fa-shopping-cart cart-top-items"></i>
+                    </div>
+                    <div class="cart-top-payment cart-top-items">
+                        <i class="fas fa-money-check cart-top-items"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cart-content">
+                <div class="cart-content-left">
+                  <table  id="my-cart"> 
+
+                  </table>
+                </div>
+                <div class="cart-content-right"   id="donhang">
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+    </section>
+
+<!------FOOTER-->
+<div class="footer">
+    <div class="footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>L&N SHOES</h4>
+                <ul>
+                    <li><a href="">Về chúng tôi</a></li>
+                    <li><a href="">Dịch vụ</a></li>
+                    <li><a href="">Chính sách bảo mật</a></li>
+                    <li><a href="">Chính sách đổi trả</a></li>
+             
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Trợ giúp</h4>
+                <ul>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Giao hàng</a></li>
+                    <li><a href="">Trả hàng</a></li>
+                    <li><a href="thongtindonhang.html">Đơn hàng</a></li>
+                    <li><a href="trangthanhtoan.html">Thanh toán</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="index.html">NIKE</a></li>
+                    <li><a href="index.html">ADIDAS</a></li>
+                    <li><a href="index.html">PUMA</a></li>
+                    <li><a href="index.html">FILA</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="social-link">
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+</div>
+<script src="./js/index.js"></script>
+
+<script>
+    let loginName = localStorage.getItem('loginName') ? localStorage.getItem('loginName') : '';
+    if(loginName==''){
+        document.getElementById('login-btn').innerHTML='<a href="dangnhap.html"><i class="fas fa-user"></i></a>';
+        document.getElementById('logout-btn').style.display="none";
+    }
+    
+</script>
+<script>
+    showgiohang();
+</script>
+
+</body>
+
+
+    
+</html>

@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    color: black;
+    outline: none;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.header {
+    display: flex;
+    height: 100px;
+    background-color: #ddd;
+    /* width: 100vw; */
+    width: 100%;
+    /* border: 2px solid #333; */
+    line-height: 100px;
+    justify-content: space-between;
+}
+.header-title .logo{
+    width: 100%;
+    height: 100px;
+}
+.header-title .logo img{
+    width: 100%;
+    height: 100px;
+}
+.top-menu{
+    display: flex;
+}
+.admin-content{
+    border: 2px solid #333;
+    height: auto;
+    display: flex;
+}
+
+
+.admin-content-right-account label{
+    text-align: left;
+}
+.admin-content-right-account hr{
+    border: none;
+}
+.information{
+    text-align: center;
+}
+.information table{
+    border-collapse: collapse;
+    align-items: center;
+}
+.information table th{
+    margin: 0 10px;
+    padding: 0 20px;
+    border: 1px solid black;
+
+}
+.information table tbody td{
+    margin: 0 10px;
+    padding: 0 20px;
+    border: 1px solid black;
+
+}
+.admin-content-right{
+    text-align: center;
+}
+.admin-content-right h2{
+    padding-top: 20px;
+}
+#myTable table {
+    padding: 0px 0px 0px 0px !important;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
+    *cursor: hand;
+  }
+  .pagination{
+    float: right;
+  }
+  .hr1{
+    border: 1px solid black;
+  }
+  .link i{
+    margin-left: 20px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid black;
+    border-radius: 50%;
+  }
+  .link{
+    padding-bottom: 20px;
+  }
+  
+    .table-title {
+        padding-bottom: 10px;
+        margin: 0 0 10px;
+    }
+    .table-title h2 {
+        margin: 6px 0 0;
+        font-size: 22px;
+    }
+    .table-title .add-new {
+        float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+    }
+  .table-title .add-new i {
+    margin-right: 4px;
+  }
+    table.table {
+        table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table th:last-child {
+        width: 100px;
+    }
+    table.table td a {
+    cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+    min-width: 24px;
+    }    
+  table.table td a.add {
+        color: #27C46B;
+    }
+    table.table td a.edit {
+        color: rgb(23, 45, 250);
+    }
+    table.table td a.delete {
+        color: #E34724;
+    }
+    table.table td i {
+        font-size: 15px;
+    }
+  table.table td a.add i {
+        font-size: 15px;
+      margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }    
+    table.table .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+  table.table .form-control.error {
+    border-color: #f50000;
+  }
+  table.table td .add {
+    display: none;
+  }
+  table#usersList {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+table#myTable{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+#nav{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+div#nav a {
+    border: 1px solid black;
+    padding: 10px;
+}
+.information{
+    margin: 50px 0;
+    width: 100%;
+}
+.information table{
+    width: 90%;
+}
+table#myTable {
+    width: 85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+table#myTable tr th,td{
+    border: 1px solid black;
+}

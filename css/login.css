@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.boxcenter {
+    width: 100%;
+    margin: 0 auto;
+}
+.menu{
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: black;
+    color: #CCC;
+    border-radius: 5px;
+    text-align: center;
+}
+.title{
+    width: 100%;
+    text-align: center;
+}
+.header {
+    background-image: linear-gradient(#F90, #F60);
+    border: 1px #F60 solid;
+    color: #FFF;
+    border-radius: 5px;
+    text-align: center;
+}
+.header h1{
+    font-size:33px;
+}
+a {
+    text-decoration: none;
+}
+
+.menu ul {
+    padding: 0px 10px;
+}
+
+.menu ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 0px 15px;
+}
+
+.menu ul li a {
+    color: #CCC;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.menu ul li a:hover {
+    color: white;
+    font-size: 0.8vw;
+}
+.information {
+    padding: 25px 254px;
+    text-align: center;
+}
+.information table{
+    border-collapse: collapse;
+}
+.information table th{
+    margin: 0 10px;
+    padding: 0 20px;
+    border: 1px solid #333;
+}
+.information table tbody td{
+    margin: 0 10px;
+    padding: 0 20px;
+    border: 1px solid #333;
+}
+.information-button{
+    text-align: center;
+}
+.information-button input{
+    align-items: center;
+    height: 30px;
+    width: 100px;
+}
